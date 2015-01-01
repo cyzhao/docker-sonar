@@ -12,4 +12,6 @@ RUN sed -i 's|#sonar.jdbc.username=sonar|sonar.jdbc.username=${env:DB_USER}|g' /
 RUN sed -i 's|sonar.jdbc.url=jdbc:h2|#sonar.jdbc.url=jdbc:h2|g' /opt/sonar/conf/sonar.properties
 RUN sed -i 's|#sonar.jdbc.url=jdbc:postgresql://localhost/sonar|sonar.jdbc.url=jdbc:postgresql://${env:DB_PORT_5432_TCP_ADDR}/${env:DB_NAME}|g' /opt/sonar/conf/sonar.properties
 
+EXPOSE 9000
+
 CMD ["/opt/sonar/bin/linux-x86-64/sonar.sh","console"]
